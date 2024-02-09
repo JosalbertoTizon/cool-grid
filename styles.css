@@ -1,0 +1,11 @@
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pixel {
+  background-color: green;
+  aspect-ratio: 1;
+  flex: 6.25%;
+}
