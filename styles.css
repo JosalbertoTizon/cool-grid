@@ -3,8 +3,13 @@ body {
   padding: 0;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.number-of-tiles-button {
+  margin-bottom: 10px;
 }
 
 .container {
@@ -16,5 +21,5 @@ body {
 .pixel {
   background-color: green;
   aspect-ratio: 1;
-  flex: 6.25%;
+  width: 6.25%;
 }
