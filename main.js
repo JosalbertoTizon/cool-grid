@@ -5,4 +5,7 @@ for(let i = 0; i < 16*16; ++ i) {
 
 Array.from(container.children).forEach(element => {
   element.classList.add("pixel");
+  element.addEventListener("mouseover", e => {
+    element.style.backgroundColor = "blue";
+  })
 })
