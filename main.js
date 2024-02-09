@@ -20,5 +20,10 @@ buildGrid(16);
 
 const NumberOfTilesButton = document.querySelector(".number-of-tiles-button");
 NumberOfTilesButton.addEventListener("click", e => {
-  buildGrid(prompt("How many tiles do you want on each direction?"));
+  let promptValue = prompt("How many tiles do you want on each direction?");
+  if(promptValue == null)
+    return;
+  if(!isNaN(promptValue) && Number.isInteger(+promptValue) && promptValue > 0 && promptValue <= 100)
+    buildGrid(promptValue);
+  else alert("Invalid Number!");
 })
