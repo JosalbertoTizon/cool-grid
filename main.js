@@ -1,5 +1,12 @@
 const container = document.querySelector(".container");
 
+const randomRGBColor = () => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+}
+
 const buildGrid = tileNumber => {
   while(container.firstElementChild)
     container.removeChild(container.firstElementChild)
@@ -10,10 +17,9 @@ const buildGrid = tileNumber => {
     element.classList.add("pixel");
     element.style.width = String(100/tileNumber) + "%";
     element.addEventListener("mouseover", e => {
-      element.style.backgroundColor = "blue";
+      element.style.backgroundColor = randomRGBColor();
     })
   })
-
 }
 
 buildGrid(16);
