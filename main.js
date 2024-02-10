@@ -7,6 +7,16 @@ const randomRGBColor = () => {
   return `rgb(${r},${g},${b})`;
 }
 
+const moveColor10Percent = (baseRGBVectorString, preRGBVectorString, newRGBVectorString) => {
+  let baseRGBVector = baseRGBVectorString.substring(4, baseRGBVectorString.length - 1).split(",");
+  let preRGBVector = preRGBVectorString.substring(4, preRGBVectorString.length - 1).split(",");
+  let newRGBVector = newRGBVectorString.substring(4, newRGBVectorString.length - 1).split(",");
+  let resultRGBVector = [];
+  for(let i = 0; i < preRGBVector.length; ++ i) 
+    resultRGBVector.push(String(+preRGBVector[i] + (+newRGBVector[i] - +baseRGBVector[i]) / 10));
+  return "rgb(" + resultRGBVector[0] + ", " + resultRGBVector[1] + ", " + resultRGBVector[2] + ")";
+}
+
 const buildGrid = tileNumber => {
   while(container.firstElementChild)
     container.removeChild(container.firstElementChild)
@@ -16,8 +26,10 @@ const buildGrid = tileNumber => {
   Array.from(container.children).forEach(element => {
     element.classList.add("pixel");
     element.style.width = String(100/tileNumber) + "%";
+    element.initialBackgroundColor = getComputedStyle(element).backgroundColor;
     element.addEventListener("mouseover", e => {
-      element.style.backgroundColor = randomRGBColor();
+      //element.style.backgroundColor = randomRGBColor();
+      element.style.backgroundColor = moveColor10Percent(element.initialBackgroundColor, getComputedStyle(element).backgroundColor, "rgb(0,0,0)");
     })
   })
 }
